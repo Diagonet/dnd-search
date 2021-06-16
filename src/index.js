@@ -3,14 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import axios from "axios";
 import Logo from "./components/Logo";
-// import apiTest from "./testAPI";
-// import apiMultiple from "./testMultiple";
 import SearchResult from "./components/SearchResult";
 import Button from "./components/Button";
 import MultipleSearchResults from "./components/MultipleSearchResults";
-
-// const testAPI = apiTest();
-// const multiple = apiMultiple();
 
 const Search = () => {
   const [searchBox, setSearch] = useState(null);
