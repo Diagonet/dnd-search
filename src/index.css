@@ -18,6 +18,14 @@ body {
   font-size: 1.7em;
 }
 .search-result {
+  padding: 10px;
+  width: 300px;
+  margin: 10px;
+  border: black;
+  border-style: solid;
+}
+.single-result {
+  padding: 10px;
   width: 200px;
   margin: 10px;
   border: black;
@@ -31,4 +39,17 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: inherit;
 }
