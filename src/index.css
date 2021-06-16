@@ -53,3 +53,7 @@ body {
   font-size: 12px;
   font-family: inherit;
 }
+.concentration {
+  background: blue;
+  color: white;
+}
