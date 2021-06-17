@@ -3,10 +3,16 @@
 *::after {
   box-sizing: border-box;
 }
+:root {
+  --speed: 500ms;
+}
 body {
   padding: 10px;
   font-family: "Roboto";
   background-color: brown;
+}
+h2 {
+  margin-top: 0px;
 }
 .search-box {
   width: 300px;
@@ -18,20 +24,28 @@ body {
   font-size: 1.7em;
 }
 .search-result {
+  border-radius: 10px;
   padding: 10px;
-  width: 300px;
+  width: 400px;
   margin: 10px;
   border: black;
   border-style: solid;
 }
 .single-result {
+  border-radius: 5px;
   padding: 10px;
   width: 200px;
   margin: 10px;
   border: black;
   border-style: solid;
+  transition: filter var(--speed);
+  background-color: brown;
+}
+.single-result:hover {
+  filter: brightness(1.2);
 }
 .results-box {
+  position: relative;
   margin: auto;
   margin-top: 30px;
   width: 660px;
@@ -56,4 +70,35 @@ body {
 .concentration {
   background: blue;
   color: white;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.spellLevel {
+  position: absolute;
+  right: 143px;
+  top: 0;
+  font-size: larger;
+  font-weight: bolder;
+}
+.animation-enter {
+  transform: scale(0.5);
+  filter: opacity(0);
+}
+.animation-enter-active {
+  transform: scale(1);
+  filter: opacity(1);
+  transition: all var(--speed) ease;
+}
+.animation-exit {
+  transform: scale(1);
+  filter: opacity(1);
+}
+.animation-exit-active {
+  transform: scale(0.5);
+  filter: opacity(0);
+  transition: all var(--speed) ease;
 }

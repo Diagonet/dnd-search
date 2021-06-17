@@ -8,6 +8,9 @@ export default class SearchResult extends React.Component {
           this.props.value.concentration && "concentration",
         ].join(" ")}
       >
+        <div>
+          <p className={"spellLevel"}>{this.props.value.level}</p>
+        </div>
         <h2>{this.props.value.name}</h2>
         <div>
           <b>Range:</b> {this.props.value.range}
