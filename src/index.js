@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import axios from "axios";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 import Logo from "./components/Logo";
 import SearchResult from "./components/SearchResult";
 import Button from "./components/Button";
@@ -14,7 +14,7 @@ const Search = () => {
   const [multipleResults, setMultipleResults] = useState(false);
   const [theResult, setTheResult] = useState(null);
   const [noResult, setNoResult] = useState(null);
-  const [showSingle, setShowSingle] = useState(false);
+  // const [showSingle, setShowSingle] = useState(false);
 
   const searching = () => {
     const baseURL = "https://www.dnd5eapi.co/api/spells/";
@@ -27,7 +27,7 @@ const Search = () => {
           setNoResult(false);
           setTheResult(null);
           setMultipleResults(res.data);
-          setShowSingle(true);
+          // setShowSingle(true);
         } else if (res.data.count === 1) {
           // only one result? API call again to get actual info
           setNoResult(false);
