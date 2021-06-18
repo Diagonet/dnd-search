@@ -14,8 +14,11 @@ body {
 h2 {
   margin-top: 0px;
 }
+select {
+  margin-right: 10px;
+}
 .search-box {
-  width: 300px;
+  width: 350px;
   margin: auto;
 }
 .logo {

@@ -8,18 +8,22 @@ import SearchResult from "./components/SearchResult";
 import Button from "./components/Button";
 import MultipleSearchResults from "./components/MultipleSearchResults";
 import ErrorMessage from "./components/ErrorMessage";
+import ImgLogo from "./components/ImgLogo";
+import SpellLevel from "./components/SpellLevel";
 
 const Search = () => {
   const [searchBox, setSearch] = useState(null);
   const [multipleResults, setMultipleResults] = useState(false);
   const [theResult, setTheResult] = useState(null);
   const [noResult, setNoResult] = useState(null);
+  const [selectData, setSelectData] = useState(null);
   // const [showSingle, setShowSingle] = useState(false);
 
   const searching = () => {
     const baseURL = "https://www.dnd5eapi.co/api/spells/";
+    console.log(selectData);
     axios
-      .get(baseURL + "?name=" + searchBox)
+      .get(baseURL, { params: { name: searchBox, level: selectData } })
       .then((res) => {
         console.log(res.data);
         if (res.data.count > 1) {
@@ -44,7 +48,6 @@ const Search = () => {
         // handle error
         console.log(error);
       });
-    console.log(searchBox);
   };
 
   const exactSearch = (url) => {
@@ -53,6 +56,11 @@ const Search = () => {
       console.log(res.data);
       setTheResult(res.data);
     });
+  };
+  const resetSearch = () => {
+    setMultipleResults(null);
+    setTheResult(null);
+    setNoResult(false);
   };
 
   const handleKeyPress = (event) => {
@@ -64,6 +72,13 @@ const Search = () => {
   const getData = (text) => {
     setSearch(text.target.value.toLowerCase().split(" ").join("+"));
   };
+
+  const getSelectData = (value) => {
+    value.target.value === "-1"
+      ? setSelectData(null)
+      : setSelectData(value.target.value);
+  };
+
   return (
     <div>
       <div
@@ -72,7 +87,11 @@ const Search = () => {
           !(noResult || theResult || multipleResults) && "centered",
         ].join(" ")}
       >
-        <Logo />
+        {(noResult || theResult || multipleResults) && (
+          <Logo onClick={resetSearch} />
+        )}
+        {!(noResult || theResult || multipleResults) && <ImgLogo />}
+        <SpellLevel onChange={getSelectData} />
         <input type="text" onChange={getData} onKeyPress={handleKeyPress} />
         <Button onClick={searching} />
       </div>
