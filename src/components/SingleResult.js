@@ -1,8 +1,22 @@
-const SingleResult = ({ value, onClickFunction }) => {
+import { CSSTransition } from "react-transition-group";
+
+const SingleResult = ({ value, onClickFunction, displayFlag }) => {
   return (
-    <div className="single-result" onClick={() => onClickFunction(value.url)}>
-      {value.name}
-    </div>
+    <>
+      <CSSTransition
+        in={displayFlag}
+        classNames="animation"
+        timeout={500}
+        unmountOnExit
+      >
+        <div
+          className="single-result"
+          onClick={() => onClickFunction(value.url)}
+        >
+          {value.name}
+        </div>
+      </CSSTransition>
+    </>
   );
 };
 

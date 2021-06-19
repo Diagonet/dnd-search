@@ -7,6 +7,7 @@ const MultipleSearchResults = (props) => {
           key={index}
           value={result}
           onClickFunction={props.onClick}
+          displayFlag={props.displayFlag}
         />
       ))}
     </>

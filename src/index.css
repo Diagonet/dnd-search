@@ -33,6 +33,7 @@ select {
   margin: 10px;
   border: black;
   border-style: solid;
+  background: rgb(204, 204, 204);
 }
 .single-result {
   border-radius: 5px;
@@ -78,7 +79,7 @@ select {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
 }
 .spellLevel {
   position: absolute;
@@ -86,6 +87,19 @@ select {
   top: 0;
   font-size: larger;
   font-weight: bolder;
+}
+.grow {
+  position: fixed;
+  width: 95%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  font-size: larger;
+  z-index: 3;
+}
+.spellLevelGrow {
+  right: 50px;
+  font-size: 35px;
 }
 .animation-enter {
   transform: scale(0.5);

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import axios from "axios";
-// import { CSSTransition } from "react-transition-group";
 import Logo from "./components/Logo";
 import SearchResult from "./components/SearchResult";
 import Button from "./components/Button";
@@ -17,11 +16,11 @@ const Search = () => {
   const [theResult, setTheResult] = useState(null);
   const [noResult, setNoResult] = useState(null);
   const [selectData, setSelectData] = useState(null);
-  // const [showSingle, setShowSingle] = useState(false);
+  const [showSingle, setShowSingle] = useState(false);
 
   const searching = () => {
     const baseURL = "https://www.dnd5eapi.co/api/spells/";
-    console.log(selectData);
+    console.log(searchBox);
     axios
       .get(baseURL, { params: { name: searchBox, level: selectData } })
       .then((res) => {
@@ -31,17 +30,19 @@ const Search = () => {
           setNoResult(false);
           setTheResult(null);
           setMultipleResults(res.data);
-          // setShowSingle(true);
+          setShowSingle(true);
         } else if (res.data.count === 1) {
           // only one result? API call again to get actual info
           setNoResult(false);
           setMultipleResults(null);
           exactSearch(res.data.results[0].url);
+          setShowSingle(false);
         } else if (res.data.count === 0) {
           // no results, display message
           setTheResult(null);
           setMultipleResults(null);
           setNoResult(true);
+          setShowSingle(false);
         }
       })
       .catch(function (error) {
@@ -53,6 +54,7 @@ const Search = () => {
   const exactSearch = (url) => {
     axios.get("https://www.dnd5eapi.co" + url).then((res) => {
       setMultipleResults(null);
+      setShowSingle(false);
       console.log(res.data);
       setTheResult(res.data);
     });
@@ -61,6 +63,7 @@ const Search = () => {
     setMultipleResults(null);
     setTheResult(null);
     setNoResult(false);
+    setShowSingle(false);
   };
 
   const handleKeyPress = (event) => {
@@ -70,7 +73,7 @@ const Search = () => {
   };
 
   const getData = (text) => {
-    setSearch(text.target.value.toLowerCase().split(" ").join("+"));
+    setSearch(text.target.value);
   };
 
   const getSelectData = (value) => {
@@ -98,19 +101,13 @@ const Search = () => {
       <div className="results-box">
         {theResult && <SearchResult value={theResult} />}
 
-        {/* <CSSTransition
-          in={showSingle}
-          classNames="animation"
-          timeout={500}
-          unmountOnExit
-        > */}
         {multipleResults && (
           <MultipleSearchResults
             value={multipleResults}
             onClick={exactSearch}
+            displayFlag={showSingle}
           />
         )}
-        {/* </CSSTransition> */}
 
         {noResult && <ErrorMessage />}
       </div>
