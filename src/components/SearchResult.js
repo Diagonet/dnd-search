@@ -48,7 +48,7 @@ const SearchResult = (props) => {
         <br />
         {props.value.desc}
       </div>
-      {grow && (
+      {grow && props.value.hasOwnProperty("higher_level") && (
         <div>
           <b>Casting at Higher Levels:</b> {props.value.higher_level}{" "}
         </div>
