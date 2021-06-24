@@ -1,6 +1,9 @@
 import { CSSTransition } from "react-transition-group";
+import { useState } from "react";
 
-const SingleResult = ({ value, onClickFunction, displayFlag }) => {
+const SingleResult = ({ value, onClickFunction, displayFlag, animations }) => {
+  console.log(animations);
+
   return (
     <>
       <CSSTransition
