@@ -72,7 +72,7 @@ select {
   font-family: inherit;
 }
 .concentration {
-  background: blue;
+  background: rgba(0, 0, 255, 0.521);
   color: white;
 }
 .centered {
