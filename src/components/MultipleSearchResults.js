@@ -8,7 +8,6 @@ const MultipleSearchResults = (props) => {
           value={result}
           onClickFunction={props.onClick}
           displayFlag={props.displayFlag}
-          animations={props.animations}
         />
       ))}
     </>

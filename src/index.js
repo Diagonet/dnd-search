@@ -9,8 +9,6 @@ import MultipleSearchResults from "./components/MultipleSearchResults";
 import ErrorMessage from "./components/ErrorMessage";
 import ImgLogo from "./components/ImgLogo";
 import SpellLevel from "./components/SpellLevel";
-import Toggle from "react-toggle";
-import "react-toggle/style.css";
 
 const Search = () => {
   const [searchBox, setSearch] = useState(null);
@@ -19,7 +17,6 @@ const Search = () => {
   const [noResult, setNoResult] = useState(null);
   const [selectData, setSelectData] = useState(null);
   const [showSingle, setShowSingle] = useState(false);
-  const [animations, setAnimations] = useState(true);
 
   const searching = () => {
     const baseURL = "https://www.dnd5eapi.co/api/spells/";
@@ -60,7 +57,7 @@ const Search = () => {
       setTimeout(() => {
         setMultipleResults(null);
         setTheResult(res.data);
-      }, 500);
+      }, 425);
 
       console.log(res.data);
     });
@@ -87,16 +84,9 @@ const Search = () => {
       ? setSelectData(null)
       : setSelectData(value.target.value);
   };
-  const toggleAnimations = () => {
-    setAnimations(!animations);
-  };
 
   return (
     <div>
-      <label>
-        <span>Toggle animations</span>
-        <Toggle defaultChecked={animations} onChange={toggleAnimations} />
-      </label>
       <div
         className={[
           "search-box",
@@ -119,7 +109,6 @@ const Search = () => {
             value={multipleResults}
             onClick={exactSearch}
             displayFlag={showSingle}
-            animations={animations}
           />
         )}
 

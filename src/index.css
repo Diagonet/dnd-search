@@ -122,3 +122,23 @@ select {
   filter: opacity(0);
   transition: all var(--speed) ease;
 }
+
+.logo-img {
+  transform-origin: 25% 50%;
+  animation: logoMoveIn 1s;
+  margin-left: 25px;
+}
+
+@keyframes logoMoveIn {
+  0% {
+    opacity: 0;
+    transform: translateX(300px) rotateZ(30deg);
+  }
+  75% {
+    transform: translateX(-20px) rotateZ(-20deg);
+    opacity: 100%;
+  }
+  100% {
+    transform: translate(0) rotate(0);
+  }
+}
