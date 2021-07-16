@@ -125,7 +125,7 @@ select {
 
 .logo-img {
   transform-origin: 25% 50%;
-  animation: logoMoveIn 1s;
+  animation: logoMoveIn linear 1s;
   margin-left: 25px;
 }
 
